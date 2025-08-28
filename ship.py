@@ -14,7 +14,7 @@ class Ship():
         self.image = pygame.image.load('images/monkey_resized.bmp')  # Load the ship image
         self.rect = self.image.get_rect()  # Get the rectangular area of the ship image
         self.screen_rect = screen.get_rect()  # Get the rectangular area of the screen
-    # Position the ship at the center bottom of the screen
+        # Position the ship at the center bottom of the screen
         self.rect.centerx = self.screen_rect.centerx  # Set the ship's center x-coordinate to match screen's center
         self.rect.centery = self.screen_rect.centery  # Set the ship's center y-coordinate to match screen's center
         self.rect.bottom = self.screen_rect.bottom  # Set the ship's bottom edge to match screen's bottom edge

@@ -25,10 +25,7 @@ def check_keydown_events(event, ai_settings,screen, ship, bullets):
     elif event.key == pygame.K_UP:
         ship.moving_up = True
     elif event.key == pygame.K_SPACE:
-        # 创建一颗子弹，并将其加入到编组bullets中
-        new_bullet = Bullet(ai_settings, screen, ship)
-        bullets.add(new_bullet)
-
+        fire_bullet(ai_settings, screen, ship, bullets)
 def check_keyup_events(event, ship):
     ''' 响应松开'''
     if event.key == pygame.K_RIGHT:
@@ -47,13 +44,29 @@ def update_screen(ai_settings, screen, ship, bullets) -> object:
     """
     # 每次循环都重新绘制屏幕
     screen.fill(ai_settings.bg_color)
+    ship.blitme()
     for bullet in bullets.sprites():
         bullet.draw_bullet()
-    ship.blitme()
     # 让最新绘制的屏幕可见
     pygame.display.flip()
 
 
+def update_bullets(bullets):
+    ''' 更新子弹的位置，并删除已经消失的子弹'''
+    # 更新子弹的位置
+    bullets.update()
+
+    #删除已消失的子弹
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+
+def fire_bullet(ai_settings, screen, ship, bullets):
+    ''' 如果还没有到达限制，就发射一枚子弹'''
+    # 创建一颗子弹，并将其加入到编组bullets中
+    if len(bullets) < ai_settings.bullets_allowed:
+        new_bullet = Bullet(ai_settings, screen, ship)
+        bullets.add(new_bullet)
 
 
 

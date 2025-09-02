@@ -5,7 +5,8 @@ import os
 # 1. 定义图片的完整路径
 #    使用 r"..." (原始字符串) 是处理 Windows 路径的好方法，
 #    它可以防止反斜杠 \被误解为转义字符。
-image_path = r"D:\alien_invasion\images\monkey.bmp"
+#image_path = r"D:\alien_invasion\images\monkey.bmp"
+image_path = r"D:\alien_invasion\images\alien.bmp"
 
 # 2. 检查文件是否存在
 if not os.path.exists(image_path):

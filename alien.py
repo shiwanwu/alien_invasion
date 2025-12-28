@@ -1,5 +1,5 @@
-import pygame
-from pygame.sprite import Sprite
+import  pygame
+from    pygame.sprite import Sprite
 
 class Alien(Sprite):
     ''' indicate a single alien'''
